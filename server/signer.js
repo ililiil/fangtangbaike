@@ -1,7 +1,13 @@
 import { Signer } from '@volcengine/openapi'
 
-const AK = process.env.VOLC_AK || 'YOUR_ACCESS_KEY_HERE'
-const SK = process.env.VOLC_SK || 'TmpVMVlUUXdaakprT0dObE5ESm1NV0psTURneVpEY3dZbUZsWkdWbU1UYw=='
+const AK = process.env.VOLC_AK
+const SK = process.env.VOLC_SK
+
+if (!AK || !SK) {
+  console.error('Error: VOLC_AK and VOLC_SK environment variables are required')
+  console.error('Please set them in your .env file or environment')
+  process.exit(1)
+}
 const SERVICE = 'air'
 const REGION = 'cn-north-1'
 const HOST = 'api-knowledgebase.mlp.cn-beijing.volces.com'
